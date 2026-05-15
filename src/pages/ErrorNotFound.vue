@@ -1,19 +1,19 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
-    <div>
-      <div style="font-size: 30vh">404</div>
-
-      <div class="text-h2" style="opacity: 0.4">Oops. Nothing here...</div>
-
+  <q-page class="flex flex-center bg-grey-2">
+    <q-card class="q-pa-xl text-center" style="width: 100%; max-width: 420px">
+      <div class="text-h1 text-weight-bold text-grey-4 q-mb-md">404</div>
+      <div class="text-h6 q-mb-lg">Página no encontrada</div>
       <q-btn
-        class="q-mt-xl"
-        color="white"
-        text-color="blue"
+        label="Ir al inicio"
+        color="primary"
         unelevated
-        to="/"
-        label="Go Home"
-        no-caps
+        @click="() => void router.push('/login')"
       />
-    </div>
-  </div>
+    </q-card>
+  </q-page>
 </template>
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter();
+</script>

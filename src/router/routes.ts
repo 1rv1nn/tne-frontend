@@ -4,11 +4,25 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      { path: '', redirect: '/login' },
+      {
+        path: '/login',
+        component: () => import('pages/LoginPage.vue'),
+        meta: { guest: true },
+      },
+      {
+        path: '/register',
+        component: () => import('pages/RegisterPage.vue'),
+        meta: { guest: true },
+      },
+      {
+        path: '/welcome',
+        component: () => import('pages/WelcomePage.vue'),
+        meta: { requiresAuth: true },
+      },
+    ],
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
