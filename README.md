@@ -1,43 +1,85 @@
-# TNE App (tne-frontend)
+# TNE Frontend
 
-A Quasar Project
+Interfaz web desarrollada con Quasar Framework y Vue 3 para el sistema
+de autenticación TNE. Incluye registro de usuarios, login y pantalla de bienvenida.
 
-## Install the dependencies
+## Tecnologías
 
-```bash
-yarn
-# or
-npm install
-```
+- Quasar Framework v2
+- Vue 3
+- TypeScript
+- Pinia (manejo de estado)
+- Axios (consumo de API REST)
+- Vite
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+## Requisitos previos
 
-```bash
-quasar dev
-```
+- Node.js v20 o superior
+- npm
+- Repositorio `tne-backend` corriendo en puerto 3000
 
-### Lint the files
+## Instalación
 
-```bash
-yarn lint
-# or
-npm run lint
-```
+1. Clona el repositorio:
+   git clone https://github.com/1rv1nn/tne-frontend.git
+   cd tne-frontend
 
-### Format the files
+2. Instala las dependencias:
+   npm install
 
-```bash
-yarn format
-# or
-npm run format
-```
+3. Copia el archivo de variables de entorno:
+   copy .env.example .env
 
-### Build the app for production
+## Variables de entorno
 
-```bash
-quasar build
-```
+| Variable     | Descripción          | Valor por defecto         |
+| ------------ | -------------------- | ------------------------- |
+| VITE_API_URL | URL base del backend | http://localhost:3000/api |
 
-### Customize the configuration
+## Correr en desarrollo
 
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+npm run dev
+
+La aplicación estará disponible en: http://localhost:9000
+
+## Pantallas
+
+### Login
+
+- Validación de correo y contraseña
+- Mensaje de error en credenciales incorrectas
+- Enlace a registro
+
+### Registro
+
+- Validación de nombre, correo, contraseña y confirmación
+- Asignación automática de rol invitado
+- Redirección al login tras registro exitoso
+
+### Bienvenida
+
+- Muestra nombre y rol del usuario autenticado
+- Badge rojo para admin, azul para invitado
+- Botón de cerrar sesión
+
+## Rutas
+
+| Ruta      | Descripción            | Protegida |
+| --------- | ---------------------- | --------- |
+| /login    | Pantalla de login      | No        |
+| /register | Pantalla de registro   | No        |
+| /welcome  | Pantalla de bienvenida | Sí        |
+
+## Correr en producción
+
+npm run build
+
+Los archivos compilados estarán en la carpeta `dist/`.
+
+## Usuario de prueba
+
+| Campo    | Valor         |
+| -------- | ------------- |
+| Email    | admin@tne.com |
+| Password | password      |
+| Rol      | admin         |
